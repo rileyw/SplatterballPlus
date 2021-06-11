@@ -121,7 +121,7 @@ namespace MageServer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1.2.1.7")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.61")]
         public string ServerVersion {
             get {
                 return ((string)(this["ServerVersion"]));
