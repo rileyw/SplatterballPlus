@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  splatserver:
+    build: .
+    ports:
+      - "8080:8080/tcp"  # TCP port
+      - "8081:8081/udp"  # UDP port
+    environment:
+      - DB_TYPE=mysql
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_USER=splat
+      - DB_PASSWORD=splatpass
+      - DB_NAME=splatterball
+    depends_on:
+      - mysql
+    restart: unless-stopped
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpass
+      - MYSQL_DATABASE=splatterball
+      - MYSQL_USER=splat
+      - MYSQL_PASSWORD=splatpass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: unless-stopped
+
+volumes:
+  mysql_data:
